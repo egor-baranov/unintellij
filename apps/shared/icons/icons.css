@@ -1,0 +1,1 @@
+.jb-icon { display: inline-block; width:calc(var(--jb-icon-size, 16px) * var(--ui-scale, 1)); height:calc(var(--jb-icon-size, 16px) * var(--ui-scale, 1)); object-fit: contain; flex-shrink: 0; vertical-align: middle; pointer-events: none; user-select: none; }

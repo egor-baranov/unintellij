@@ -1,0 +1,19 @@
+# monaco-smart-diff
+
+Framework-independent, read-only comparison viewer built with two standalone Monaco editors and a component-owned SVG gutter. Monaco 0.55.1 is a peer dependency.
+
+Import `createSmartDiff` from this package and `monaco-smart-diff/styles.css`. Pass a sized container, your Monaco namespace, and consumer-owned `original` and `modified` text models. The host must configure Monaco workers and its global theme. The default diff worker resolves relative to the built module; preserve `dist/assets` when serving ESM directly. Vite consumers may supply `workerFactory: () => new DiffWorker()` after importing `DiffWorker` from `monaco-smart-diff/worker?worker`.
+
+The API supports next/previous/go-to change, model and option updates, view-state save/restore, expansion, layout, and disposal. Dispose the viewer before disposing supplied models. The viewer owns its dedicated worker, editors, observers, and DOM; it never disposes supplied models.
+
+The center divider resizes the panes by dragging its narrow center handle. Focus it and use Left/Right (2% steps), Shift+Left/Right (10%), or Home/End; Enter and double-click reset to equal widths. `splitRatio` sets the original pane's fraction of available editor width, excluding the 152px gutter, and defaults to `0.5`. Both construction and `updateOptions` accept `splitRatio` and `onSplitRatioChange`. Ratios are clamped to 10–90% and a 160px minimum per pane when space permits; narrower containers use equal widths. The callback reports effective ratio changes, including container-width clamping, so a host can align headers and persist preferences. View states include optional `splitRatio`; restoring older states leaves the current split unchanged. Resizing retains selections and document reading anchors while recalculating wrapping, folding, aligned spacers, and connector geometry.
+
+Scrolling and divider dragging use one paint transaction: reconcile the follower through the existing correspondence mapping, render both dirty Monaco views, then draw the shared gutter, ribbons, and omission boundaries. A resize flushes this transaction in its current animation frame instead of delaying the overlay by another frame. Unchanged fold definitions reuse their hidden ranges, view zones, and controls across layout changes; Monaco repositions those zones as wrapping changes.
+
+Coordinated hidden ranges depend on the private Monaco 0.55.1 `setHiddenAreas` method, isolated in a compatibility adapter. Incompatible runtimes report folding as unavailable. Range geometry, view zones, highlighting, and editor behavior otherwise use public APIs.
+
+Collapsed unchanged regions retain the canonical original/modified range pair as their identity. Each pair is painted as one SVG wave–curve–wave path across both editors and the number columns, using both rendered omission positions in the same animation frame. Offscreen endpoints retain their document positions and are clipped by the comparison viewport. The existing 18px omission row has a transparent, keyboard-accessible expansion target; its tooltip and accessible label report the hidden count. Activation expands both sides.
+
+Omission geometry uses dedicated constants in `src/rendering/omission.ts`: amplitude 3 CSS px (6px peak to peak), wavelength 12px, and stroke 1px. The stroke color is `--sd-collapsed-separator-stroke`, falling back to `--sd-separator`. The wave tapers to horizontal tangents at the central curve. These metrics are independent of the 4px empty-side insertion/deletion markers. Omission position measurements use public rendered line/content geometry and actual view-zone heights, including wrapping and consumer zones; Monaco's offscreen zone callback sentinel is never used as an endpoint.
+
+The workspace README documents commands, architecture, security, coordinate conventions, limitations, and validation. MIT license; the pinned vscode-diff extraction's license is included in THIRD_PARTY_LICENSES.txt.

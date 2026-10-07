@@ -1,0 +1,39 @@
+.profiler-panel { min-width: 0; color: var(--settings-foreground, #c9ccd3); font-variant-numeric: tabular-nums; container-type: inline-size; }
+.profiler-toolbar, .profiler-actions, .profiler-process-heading { display: flex; align-items: center; gap: 8px; }
+.profiler-toolbar { justify-content: space-between; min-height: 32px; flex-wrap: wrap; }
+.profiler-actions { margin-left: auto; flex-shrink: 0; }
+.profiler-muted, .profiler-status, .profiler-metric-note, .profiler-scope-note, .profiler-device-note { color: var(--settings-muted, #959ca8); font-size: .86em; }
+.profiler-status { height: 21px; margin: 5px 0 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.profiler-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+.profiler-metric { min-width: 0; padding: 9px 0 5px; border-top: 1px solid var(--settings-border, #41464f); }
+.profiler-metric-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; min-height: 20px; }
+.profiler-metric-heading h3 { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.settings-form .profiler-panel h3 { margin: 0; font-size: .92em; font-weight: 500; }
+.profiler-value { font-size: .92em; white-space: nowrap; }
+.profiler-metric-note { margin: 3px 0 0; min-height: 18px; line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.profiler-chart { width: 100%; height: 86px; display: block; overflow: visible; }
+.profiler-chart-grid { fill: none; stroke: var(--settings-border, #41464f); stroke-width: .6; vector-effect: non-scaling-stroke; }
+.profiler-chart-line { fill: none; stroke: var(--settings-accent, #3574f0); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.profiler-chart-point { fill: var(--settings-accent, #3574f0); }
+.profiler-chart-axis, .profiler-chart-empty { fill: var(--settings-muted, #959ca8); font-family: inherit; font-size: 10px; }
+.profiler-chart-empty { font-size: 11px; }
+.profiler-scope-note, .profiler-device-note { margin: 8px 0; line-height: 1.5; overflow-wrap: anywhere; }
+.profiler-process-heading { margin: 16px 0 7px; }
+.profiler-process-scroll { height: 240px; overflow: auto; scrollbar-width: thin; scrollbar-color: var(--settings-border, #41464f) transparent; }
+.profiler-processes { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .86em; }
+.profiler-processes th { position: sticky; top: 0; background: var(--settings-background, #27292c); color: var(--settings-muted, #959ca8); font-weight: 500; text-align: left; }
+.profiler-processes th, .profiler-processes td { padding: 5px 6px; border-bottom: 1px solid var(--settings-border, #41464f); }
+.profiler-processes th:first-child, .profiler-processes td:first-child { padding-left: 0; }
+.profiler-processes th:nth-child(2) { width: 54px; }
+.profiler-processes th:nth-child(3) { width: 78px; }
+.profiler-processes th:nth-child(4) { width: 84px; }
+.profiler-processes td:not(:first-child), .profiler-processes th:not(:first-child) { text-align: right; white-space: nowrap; }
+.profiler-processes td:first-child > span, .profiler-processes small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profiler-processes small { color: var(--settings-muted, #959ca8); font-size: .9em; }
+@container (max-width: 480px) {
+  .profiler-metrics { grid-template-columns: minmax(0, 1fr); }
+  .profiler-chart { height: 110px; }
+  .profiler-processes th:nth-child(2) { width: 45px; }
+  .profiler-processes th:nth-child(3) { width: 66px; }
+  .profiler-processes th:nth-child(4) { width: 76px; }
+}

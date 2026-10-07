@@ -1,0 +1,18 @@
+appId: dev.smartdiff.desktop
+productName: unintellij
+directories:
+  app: apps/desktop/dist
+  output: release
+files:
+  - "**/*"
+  - "!**/*.map"
+asar: true
+npmRebuild: false
+mac:
+  category: public.app-category.developer-tools
+  target: dir
+  identity: null
+win:
+  target: dir
+linux:
+  target: dir

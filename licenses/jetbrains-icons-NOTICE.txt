@@ -1,0 +1,51 @@
+IntelliJ platform and language icons, revision fcefa45538a820b83936933f4ae2ed333308fd77:
+
+This software includes code from IntelliJ IDEA
+Copyright (C) JetBrains s.r.o.
+https://www.jetbrains.com/idea/
+
+Additional IntelliJ language and file-type icons from the official
+IntelliJ Platform Icons catalogue (individual Apache-2.0 SVG headers retained):
+Copyright JetBrains s.r.o. and contributors.
+https://intellij-icons.jetbrains.design/
+
+HCL, Terragrunt, and Protobuf plugin icons, intellij-plugins revision
+973e7a0bd2e4f18f529d8638d285bbba56f61e82:
+https://github.com/JetBrains/intellij-plugins/
+Licensed under Apache-2.0; source and license provenance is recorded in
+apps/shared/icons/manifest.json.
+
+Vue and Dart plugin icons from JetBrains/intellij-plugins:
+Apache-2.0, immutable revisions and license sources recorded in the manifest.
+
+Bazel plugin icon from JetBrains/hirschgarten, revision
+fdb5266347c35eae0e623fd2efaaf68ad2601b8e:
+Copyright 2021-2023 JetBrains s.r.o.
+https://github.com/JetBrains/hirschgarten/
+Apache-2.0; the unchanged upstream license is distributed in
+intellij-bazel-APACHE-2.0.txt. Source provenance is recorded in the manifest.
+
+Rust and Svelte icons match the official IntelliJ icon catalogue and are
+distributed under the MIT licenses retained in intellij-rust-MIT.txt and
+intellij-svelte-MIT.txt respectively.
+
+Native checkbox icons, revision 9ae2edc879df5e9e189483752c4c4ae01650a566:
+
+This software includes code from IntelliJ IDEA Community Edition
+Copyright (C) JetBrains s.r.o.
+https://www.jetbrains.com/idea/
+
+Additional file icons: GraphQL, Handlebars, Gherkin, and database icons retain
+individual Apache-2.0 headers from the official IntelliJ Platform Icons catalogue.
+Pug, Astro, Prisma, and WebAssembly icons come from JetBrains/intellij-plugins,
+revision 973e7a0bd2e4f18f529d8638d285bbba56f61e82. Their unchanged plugin licenses
+are included in intellij-pug-Apache-2.0.txt, intellij-astro-Apache-2.0.txt,
+intellij-prisma-Apache-2.0.txt, and intellij-wasm-MIT.txt.
+
+R and R Markdown icons: JetBrains/Rplugin,
+revision 353e94c621d077094b46a979dbc5d31f1b716c6d,
+Apache-2.0; unchanged upstream license in intellij-r-APACHE-2.0.txt.
+
+F# source, script, and signature icons: JetBrains/resharper-fsharp,
+revision 6ccc76e54f3523ee57878db6a310c193752efbf9,
+Apache-2.0; unchanged upstream license in intellij-fsharp-APACHE-2.0.txt.

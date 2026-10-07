@@ -1,0 +1,27 @@
+/* Monaco decorations paint only real added/deleted lines, including their line-number margin.
+   Keep the editor's host-owned theme and selection/find colors unchanged. */
+.file-surface-added {
+  --added-file-background: #264b33;
+  --file-change-background: var(--added-file-background);
+}
+.file-surface-deleted {
+  --deleted-file-background: #38232c;
+  --file-change-background: var(--deleted-file-background);
+}
+.file-surface-added .added-file-line,
+.file-surface-added .added-file-margin,
+.file-surface-deleted .deleted-file-line,
+.file-surface-deleted .deleted-file-margin {
+  background-color: var(--file-change-background);
+}
+/* Monaco emits decorations after selection in the same overlay. Keep our
+   opaque line fill below its native selection/find layers, but above the
+   editor background. Isolating the overlay also keeps glyphs above it. */
+:is(.file-surface-added, .file-surface-deleted) .monaco-editor .view-overlays { isolation: isolate; }
+:is(.file-surface-added, .file-surface-deleted) .monaco-editor .view-overlays .current-line { z-index: -2; }
+:is(.file-surface-added, .file-surface-deleted) .monaco-editor .view-overlays :is(.added-file-line, .deleted-file-line) { z-index: -1; }
+/* Rounded multiline selections use background-colored inverse corner pieces.
+   Match their actual row, leaving the undecorated terminal line unchanged. */
+:is(.file-surface-added, .file-surface-deleted) .monaco-editor .view-overlays > div:has(> :is(.added-file-line, .deleted-file-line)) > .cslr.monaco-editor-background {
+  background-color: var(--file-change-background);
+}

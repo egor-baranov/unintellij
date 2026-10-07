@@ -1,0 +1,23 @@
+.branch-comparison{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;background:#1e1f22;margin:0 var(--app-frame-inset) var(--app-frame-inset);border-radius:var(--app-panel-radius);overflow:hidden}
+.branch-comparison-heading{height:calc(36px * var(--ui-row-scale, 1));display:flex;align-items:center;gap:calc(8px * var(--ui-scale, 1));padding:0 calc(8px * var(--ui-scale, 1));border-bottom:1px solid #35373b;flex:none}
+.branch-comparison-heading strong{font-size:calc(12px * var(--ui-text-scale, 1));font-weight:500;max-width:60%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.branch-comparison-heading strong>span{color:#81858d;padding:0 calc(6px * var(--ui-scale, 1))}
+.branch-comparison-body{display:flex;flex:1;min-height:0;min-width:0}
+.branch-comparison-sidebar{min-width:calc(180px * var(--ui-scale, 1));max-width:45%;display:flex;flex-direction:column;flex-shrink:0;background:#1b1c1f}
+.branch-comparison-tabs{display:flex;gap:calc(8px * var(--ui-scale, 1));flex:none;border-bottom:1px solid #303237;padding:0 calc(7px * var(--ui-scale, 1));height:calc(34px * var(--ui-row-scale, 1))}
+.branch-comparison-tabs button{border:0;border-radius:0;border-bottom:2px solid transparent;background:none;padding:calc(3px * var(--ui-scale, 1)) calc(6px * var(--ui-scale, 1));font-size:calc(12px * var(--ui-text-scale, 1))}
+.branch-comparison-tabs button[aria-selected=true]{border-bottom-color:#548af7;color:#dfe1e5}
+.branch-comparison-tabs span{color:#878b93;margin-left:calc(4px * var(--ui-scale, 1))}
+.branch-comparison-files,.branch-comparison-commits{overflow:auto;min-height:0;flex:1;padding:calc(6px * var(--ui-scale, 1))}
+.branch-comparison-file{display:flex;align-items:center;width:100%;gap:calc(7px * var(--ui-scale, 1));text-align:left;border:0;background:transparent;padding:calc(5px * var(--ui-scale, 1)) calc(6px * var(--ui-scale, 1));min-height:calc(27px * var(--ui-row-scale, 1));font-size:calc(12px * var(--ui-text-scale, 1))}
+.branch-comparison-file[aria-pressed=true]{background:#2d446e;color:#e0e4ec}
+.branch-comparison-file>span{overflow:hidden;text-overflow:ellipsis;white-space:pre;flex:1}
+.branch-comparison-file small{font-size:calc(10px * var(--ui-text-scale, 1));color:#999ea8}
+.branch-comparison-file.status-A{color:#75b881}.branch-comparison-file.status-D{color:var(--tree-deleted,#74767b)}.branch-comparison-file.status-M{color:#85b5dc}
+.branch-comparison-file.status-D[aria-pressed=true]{color:var(--tree-selected-annotation,#c3c7d1)}
+.branch-comparison-commits h3{font-size:calc(11px * var(--ui-text-scale, 1));font-weight:500;color:#999faa;padding:calc(4px * var(--ui-scale, 1));margin:calc(4px * var(--ui-scale, 1)) 0}
+.branch-comparison-commit{display:flex;flex-direction:column;gap:calc(5px * var(--ui-scale, 1));padding:calc(7px * var(--ui-scale, 1));border-bottom:1px solid #2d2f34;font-size:calc(12px * var(--ui-text-scale, 1))}
+.branch-comparison-commit small{color:#838b99;font-size:calc(10px * var(--ui-text-scale, 1))}
+.branch-comparison-empty{font-size:calc(12px * var(--ui-text-scale, 1));color:#8b919d;padding:calc(5px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));line-height:1.5}
+.branch-comparison-resizer{flex:0 0 calc(5px * var(--ui-row-scale, 1));cursor:col-resize;background:#292b30;touch-action:none;outline:0}.branch-comparison-resizer:focus-visible:not(:active){background:var(--window-accent,#4a78c3)}
+.branch-workspace-hidden{display:none!important}

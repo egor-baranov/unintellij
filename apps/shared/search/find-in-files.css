@@ -1,0 +1,102 @@
+.find-in-files-view {
+  --find-scale: var(--ui-scale, 1);
+  --find-match-background: #d7a93652;
+  --find-result-match-background: #e2b657;
+  --find-result-match-foreground: #25221b;
+  box-sizing: border-box;
+  width: 100%; height: 100%; min-width: 0; min-height: 0;
+  display: flex; flex: 1; flex-direction: column; overflow: hidden;
+  margin: 0; padding: 0; border: 0;
+  background: var(--popups-background, #27292c); color: var(--popups-foreground, #c9ccd3);
+  font: var(--ui-font-size, 13px) var(--ui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+}
+.find-in-files-dialog {
+  box-sizing: border-box;
+  position: fixed; inset: auto;
+  max-width: none; max-height: none; margin: 0; padding: 0;
+  border: 1px solid var(--popups-border, #41464f); border-radius: var(--radius-tab, 6px);
+  background: var(--popups-background, #27292c);
+  box-shadow: 0 14px 50px #0007; overflow: hidden;
+}
+.find-in-files-dialog[open] { display: flex; flex-direction: column; }
+.find-in-files-dialog::backdrop { background: #0004; }
+.find-in-files-dialog .find-dialog-heading { cursor: move; touch-action: none; user-select: none; }
+.find-in-files-view .find-dialog-move-title { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: move; }
+.find-in-files-dialog.is-transforming { user-select: none; }
+.find-in-files-dialog.is-transforming > .find-in-files-view { pointer-events: none; }
+.find-in-files-dialog.gesture-move { cursor: move; }
+.find-in-files-dialog .find-dialog-resize { position: absolute; z-index: 20; border: 0; padding: 0; margin: 0; min-width: 0; min-height: 0; background: transparent; box-shadow: none; touch-action: none; }
+.find-dialog-resize[data-resize-direction="n"], .find-dialog-resize[data-resize-direction="s"] { left: 12px; right: 12px; height: 5px; cursor: ns-resize; }
+.find-dialog-resize[data-resize-direction="n"] { top: 0; }
+.find-dialog-resize[data-resize-direction="s"] { bottom: 0; }
+.find-dialog-resize[data-resize-direction="e"], .find-dialog-resize[data-resize-direction="w"] { top: 12px; bottom: 12px; width: 5px; cursor: ew-resize; }
+.find-dialog-resize[data-resize-direction="e"] { right: 0; }
+.find-dialog-resize[data-resize-direction="w"] { left: 0; }
+.find-dialog-resize[data-resize-direction="ne"], .find-dialog-resize[data-resize-direction="nw"], .find-dialog-resize[data-resize-direction="se"], .find-dialog-resize[data-resize-direction="sw"] { width: 12px; height: 12px; }
+.find-dialog-resize[data-resize-direction="ne"] { top: 0; right: 0; cursor: nesw-resize; }
+.find-dialog-resize[data-resize-direction="nw"] { top: 0; left: 0; cursor: nwse-resize; }
+.find-dialog-resize[data-resize-direction="se"] { bottom: 0; right: 0; cursor: nwse-resize; }
+.find-dialog-resize[data-resize-direction="sw"] { bottom: 0; left: 0; cursor: nesw-resize; }
+.find-in-files-dialog.gesture-n, .find-in-files-dialog.gesture-s { cursor: ns-resize; }
+.find-in-files-dialog.gesture-e, .find-in-files-dialog.gesture-w { cursor: ew-resize; }
+.find-in-files-dialog.gesture-ne, .find-in-files-dialog.gesture-sw { cursor: nesw-resize; }
+.find-in-files-dialog.gesture-nw, .find-in-files-dialog.gesture-se { cursor: nwse-resize; }
+.find-in-files-dialog .find-dialog-resize:focus-visible { outline: 1px solid var(--popups-accent, #3574f0); outline-offset: -2px; }
+.find-in-files-view *, .find-in-files-view *::before, .find-in-files-view *::after { box-sizing: border-box; }
+.find-in-files-view button { font: inherit; color: inherit; cursor: pointer; }
+.find-in-files-view button:disabled { cursor: default; opacity: .5; }
+.find-in-files-view button:focus-visible, .find-result-list:focus-visible { outline: 2px solid var(--popups-accent, #3574f0); outline-offset: -2px; }
+.find-dialog-heading { display: flex; align-items: center; gap: 10px; min-height: calc(39px * var(--find-scale)); padding: calc(6px * var(--find-scale)) calc(13px * var(--find-scale)); flex-shrink: 0; }
+.find-dialog-heading h2 { margin: 0; font: inherit; font-weight: 600; }
+.find-result-count { margin-left: auto; color: var(--popups-muted, #959ca8); font-size: .92em; white-space: nowrap; }
+.find-in-files-view .find-close { width: calc(24px * var(--find-scale)); height: calc(24px * var(--find-scale)); padding: 3px; border: 0; border-radius: var(--radius-control, 4px); background: transparent; display: grid; place-items: center; }
+.find-in-files-view .find-close:hover { background: color-mix(in srgb, currentColor 9%, transparent); }
+.find-query-row { margin: 0 calc(13px * var(--find-scale)); height: calc(35px * var(--find-scale)); display: flex; align-items: center; gap: calc(8px * var(--find-scale)); border: 1px solid var(--popups-border, #41464f); border-radius: var(--radius-control, 4px); padding: 0 calc(9px * var(--find-scale)); flex-shrink: 0; }
+.find-query-row:focus-within { border-color: var(--popups-accent, #3574f0); outline: 1px solid var(--popups-accent, #3574f0); }
+.find-in-files-view .find-query { min-width: 0; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; border-radius: 0; outline: 0; background: transparent; color: inherit; font: inherit; box-shadow: none; }
+.find-query::-webkit-search-cancel-button { display: none; }
+.find-query::placeholder { color: var(--popups-muted, #959ca8); }
+.find-scope-row { display: flex; align-items: center; gap: calc(8px * var(--find-scale)); min-height: calc(43px * var(--find-scale)); padding: calc(6px * var(--find-scale)) calc(13px * var(--find-scale)); border-bottom: 1px solid var(--popups-border, #41464f); flex-shrink: 0; }
+.find-scope-options { display: flex; align-items: center; gap: calc(4px * var(--find-scale)); flex-shrink: 0; }
+.find-in-files-view .find-scope-options button { height: calc(28px * var(--find-scale)); padding: 0 calc(9px * var(--find-scale)); border: 1px solid transparent; border-radius: var(--radius-control, 4px); background: transparent; }
+.find-in-files-view .find-scope-options button:hover { background: color-mix(in srgb, currentColor 7%, transparent); }
+.find-in-files-view .find-scope-options button.is-selected { background: var(--popups-selection, #2e436e); }
+.find-in-files-view .find-directory-path { flex: 1; min-width: 0; height: calc(27px * var(--find-scale)); padding: 0 calc(8px * var(--find-scale)); border: 1px solid var(--popups-border, #41464f); border-radius: var(--radius-control, 4px); background: transparent; color: var(--popups-foreground, #c9ccd3); text-overflow: ellipsis; font: inherit; font-size: .94em; }
+.find-directory-path::placeholder { color: var(--popups-muted, #959ca8); }
+.find-directory-path:focus-visible { outline: 1px solid var(--popups-accent, #3574f0); outline-offset: 0; }
+.find-in-files-view .find-directory-picker { border: 1px solid var(--popups-border, #41464f); border-radius: var(--radius-control, 4px); background: transparent; height: calc(27px * var(--find-scale)); width: calc(30px * var(--find-scale)); display: grid; place-items: center; padding: 0; flex-shrink: 0; }
+.find-in-files-view .jb-icon { filter: var(--popups-icon-filter, none); }
+.find-dialog-body { flex: 1; display: grid; min-width: 0; min-height: 0; }
+.find-dialog-body > .workspace-divider { position: relative; z-index: 1; cursor: row-resize; touch-action: none; background: transparent; outline: none; }
+/* Keep the five-pixel drag target transparent even under the global appearance
+   and keyboard-focus rules. Only its one-pixel pseudo-element is painted. */
+:root .find-in-files-view .find-dialog-body > .workspace-divider,
+:root .find-in-files-view .find-dialog-body > .workspace-divider:focus-visible:not(.is-resizing):not(:active) { background: transparent; }
+.find-dialog-body > .workspace-divider::after { content: ''; position: absolute; top: 2px; right: 0; left: 0; height: 1px; background: var(--popups-border, #41464f); pointer-events: none; }
+.find-dialog-body > .workspace-divider:focus-visible:not(.is-resizing):not(:active)::after { background: var(--popups-accent, #3574f0); }
+.find-results-region { position: relative; min-height: 0; display: flex; flex-direction: column; }
+.find-result-list { flex: 1; min-height: 0; overflow: auto; padding: calc(4px * var(--find-scale)) 0; scrollbar-width: thin; scrollbar-color: var(--popups-border, #41464f) transparent; }
+.find-result-row { min-width: 0; min-height: calc(26px * var(--find-scale)); margin: 0 calc(6px * var(--find-scale)); padding: calc(4px * var(--find-scale)) calc(7px * var(--find-scale)); border-radius: var(--radius-small, 3px); display: flex; align-items: center; gap: calc(24px * var(--find-scale)); line-height: 1.3; cursor: default; }
+.find-result-row:hover { background: color-mix(in srgb, var(--popups-selection, #2e436e) 45%, transparent); }
+.find-result-row[aria-selected="true"] { background: var(--popups-selection, #2e436e); }
+.find-result-snippet { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: pre; font-family: var(--code-font-family, ui-monospace, monospace); }
+.find-result-snippet mark { color: var(--find-result-match-foreground); background: var(--find-result-match-background); border-radius: 2px; }
+.find-result-location { min-width: 0; max-width: 42%; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--popups-muted, #959ca8); font-size: .9em; text-align: right; }
+.find-result-location > span { color: var(--popups-muted, #959ca8); }
+.find-quiet-state { pointer-events: none; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--popups-muted, #959ca8); padding: 18px; text-align: center; }
+.find-quiet-state.is-error, .find-inline-error { color: var(--status-untracked, #ea8d8a); }
+.find-inline-error { padding: 5px 13px; flex-shrink: 0; font-size: .9em; }
+.find-preview { min-height: 0; display: flex; flex-direction: column; }
+.find-preview-header { display: flex; align-items: center; gap: calc(7px * var(--find-scale)); padding: calc(5px * var(--find-scale)) calc(13px * var(--find-scale)); min-height: calc(31px * var(--find-scale)); border-bottom: 1px solid var(--popups-border, #41464f); flex-shrink: 0; font-size: .94em; }
+.find-preview-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.find-preview-directory { margin-left: auto; min-width: 0; max-width: 65%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--popups-muted, #959ca8); }
+.find-preview-content { flex: 1; min-height: 0; position: relative; background: var(--editor-background, #101119); }
+.find-preview-editor { position: absolute; inset: 0; visibility: hidden; }
+.find-preview-editor.is-ready { visibility: visible; }
+.find-preview-state { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 18px; color: var(--popups-muted, #959ca8); text-align: center; }
+.find-preview-line { background: #d7a93615; }
+.find-preview-match { background: var(--find-match-background); border-radius: 1px; }
+@media (max-width: 760px), (max-height: 540px) {
+  .find-result-row { gap: 10px; }
+  .find-result-location { max-width: 38%; }
+}

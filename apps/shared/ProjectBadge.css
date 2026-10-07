@@ -1,0 +1,7 @@
+.project-badge {
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:calc(20px * var(--ui-scale, 1)); height:calc(20px * var(--ui-scale, 1));
+  border-radius:calc(4px * var(--ui-scale, 1)); color:#fff;
+  font-size:calc(14px * var(--ui-scale, 1)); font-weight:500; line-height:1;
+  letter-spacing:-.4px; user-select:none;
+}

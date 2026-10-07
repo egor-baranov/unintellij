@@ -1,0 +1,5 @@
+{
+ "compilerOptions": {"target":"ES2022","lib":["ES2022","DOM","DOM.Iterable"],"module":"ESNext","moduleResolution":"Bundler","strict":true,"skipLibCheck":true,"esModuleInterop":true,"allowSyntheticDefaultImports":true,"resolveJsonModule":true,"jsx":"react-jsx","noEmit":true,"types":["node","vite/client"],"baseUrl":".","paths":{"monaco-smart-diff":["packages/monaco-smart-diff/src/index.ts"]}},
+ "include":["packages","apps","tests","scripts","*.ts"],
+ "exclude":["node_modules","**/dist/**","release","test-results"]
+}

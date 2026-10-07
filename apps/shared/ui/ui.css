@@ -1,0 +1,25 @@
+.ui-menu-trigger{display:inline-flex;align-items:center;justify-content:center;gap:calc(6px * var(--ui-scale, 1));min-height:calc(25px * var(--ui-row-scale, 1));padding:calc(3px * var(--ui-scale, 1)) calc(7px * var(--ui-scale, 1));border:1px solid transparent;border-radius:var(--radius-control);background:transparent;color:#b8bec8;white-space:nowrap;line-height:calc(17px * var(--ui-text-scale, 1));cursor:pointer}
+.ui-menu-trigger:hover,.ui-menu-trigger[aria-expanded=true]{background:#393b40;border-color:#474a50;color:#e0e3e9}
+.ui-menu-trigger:focus-visible{outline:1px solid #6b9bfa;outline-offset:calc(1px * var(--ui-scale, 1))}
+.ui-menu-chevron{flex:none}
+.ui-menu{--popup-radius:calc(var(--popup-item-radius) + var(--popup-inset) + var(--popup-border-width));position:fixed;z-index:1000;min-width:calc(224px * var(--ui-scale, 1));max-width:min(calc(390px * var(--ui-scale, 1)),calc(100vw - calc(16px * var(--ui-scale, 1))));overflow-y:auto;overscroll-behavior:contain;padding:var(--popup-inset);background:#26282c;border:var(--popup-border-width) solid #4a4d53;border-radius:var(--popup-radius);box-shadow:0 6px 24px #0008,0 1px 4px #0005;color:#d1d5dc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:calc(12px * var(--ui-text-scale, 1));line-height:calc(18px * var(--ui-text-scale, 1));outline:none;scrollbar-width:thin;scrollbar-color:#52555d transparent}
+.ui-menu-item{width:100%;min-height:calc(29px * var(--ui-row-scale, 1));display:flex;align-items:center;gap:calc(8px * var(--ui-scale, 1));padding:calc(5px * var(--ui-scale, 1)) calc(9px * var(--ui-scale, 1)) calc(5px * var(--ui-scale, 1)) calc(6px * var(--ui-scale, 1));border:0;border-radius:var(--popup-item-radius);background:transparent;color:inherit;text-align:left;cursor:pointer;font:inherit;line-height:calc(18px * var(--ui-text-scale, 1));outline:none}
+.ui-menu-item:hover,.ui-menu-item.is-active,.ui-menu-item:focus-visible{background:#2e5792;color:#f0f4ff;outline:none}
+.ui-menu-item:disabled,.ui-menu-item:disabled:hover{background:transparent;color:#777d87;cursor:default;opacity:1}
+.ui-menu-icon{width:calc(16px * var(--ui-scale, 1));height:calc(18px * var(--ui-row-scale, 1));display:flex;align-items:center;justify-content:center;flex:none}
+.ui-menu-copy{display:flex;flex-direction:column;min-width:0;flex:1}
+.ui-menu-item-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ui-menu-description{display:block;font-size:calc(11px * var(--ui-text-scale, 1));line-height:calc(16px * var(--ui-text-scale, 1));color:#999fa9;max-width:calc(290px * var(--ui-scale, 1));white-space:normal;overflow-wrap:anywhere;padding-top:calc(1px * var(--ui-scale, 1))}
+.ui-menu-item.is-active .ui-menu-description{color:#cfdbef}
+.ui-menu-shortcut{font-size:calc(11px * var(--ui-text-scale, 1));color:#8d96a5;white-space:nowrap;padding-left:calc(18px * var(--ui-scale, 1))}
+.ui-menu-item.is-active .ui-menu-shortcut{color:#d4dff2}
+.ui-menu-label{color:#949ba7;font-size:calc(11px * var(--ui-text-scale, 1));line-height:calc(20px * var(--ui-text-scale, 1));padding:calc(3px * var(--ui-scale, 1)) calc(9px * var(--ui-scale, 1)) calc(3px * var(--ui-scale, 1)) calc(30px * var(--ui-scale, 1));user-select:none}
+.ui-menu-separator{height:calc(1px * var(--ui-row-scale, 1));background:#44474e;margin:calc(5px * var(--ui-scale, 1)) calc(4px * var(--ui-scale, 1))}
+.ui-toolbar-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:calc(26px * var(--ui-scale, 1));height:calc(25px * var(--ui-row-scale, 1));min-height:calc(25px * var(--ui-row-scale, 1));padding:calc(3px * var(--ui-scale, 1));border:1px solid transparent;border-radius:var(--radius-control);background:transparent;color:#a9b1be}
+.ui-toolbar-icon:hover{background:#383b42;border-color:transparent;color:#e0e6ef}
+.ui-toolbar-icon:disabled{opacity:.35}
+.ui-toolbar-toggle{display:inline-flex;align-items:center;justify-content:center;gap:calc(5px * var(--ui-scale, 1));min-height:calc(25px * var(--ui-row-scale, 1));padding:calc(3px * var(--ui-scale, 1)) calc(6px * var(--ui-scale, 1));border:1px solid transparent;border-radius:var(--radius-control);background:transparent;color:#a9b1be;font-size:calc(11px * var(--ui-text-scale, 1))}
+.ui-toolbar-toggle:hover{background:#383b42}
+.ui-toolbar-toggle[aria-pressed=true]{background:#343e50;border-color:#465774;color:#c2d6f5}
+.ui-settings-trigger{width:calc(27px * var(--ui-scale, 1));padding:calc(3px * var(--ui-scale, 1))}
+.ui-layout-trigger{font-size:calc(11px * var(--ui-text-scale, 1));gap:calc(6px * var(--ui-scale, 1))}

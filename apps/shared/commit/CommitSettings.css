@@ -1,0 +1,42 @@
+.commit-footer-actions > .commit-settings { margin-left: auto; flex-shrink: 0; }
+.commit-panel .commit-settings[aria-expanded="true"] { background: var(--sidebar-selection, #303236); }
+.commit-settings-popup {
+  position: fixed; z-index: 1200; box-sizing: border-box;
+  width: min(calc(380px * var(--ui-scale, 1)), calc(100dvw - 16px));
+  padding: calc(16px * var(--ui-scale, 1)) calc(15px * var(--ui-scale, 1));
+  overflow: auto; overscroll-behavior: contain;
+  border: 1px solid var(--popups-border, #43454a); border-radius: calc(7px * var(--ui-scale, 1));
+  background: var(--popups-background, #25272a); color: var(--popups-foreground, #c9ccd3);
+  font-family: var(--ui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-size: calc(13px * var(--ui-text-scale, 1)); line-height: 1.5;
+  box-shadow: 0 8px 26px #0005, 0 0 0 1px #0002;
+  scrollbar-width: thin; scrollbar-color: var(--popups-border, #43454a) transparent;
+}
+.commit-settings-popup fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.commit-settings-popup fieldset + fieldset { margin-top: calc(22px * var(--ui-scale, 1)); }
+.commit-settings-popup legend {
+  display: flex; align-items: center; gap: calc(7px * var(--ui-scale, 1));
+  float: left; width: 100%; padding: 0; margin-bottom: calc(13px * var(--ui-scale, 1)); font-weight: 500;
+}
+.commit-settings-popup legend::after { content: ''; height: 1px; background: var(--popups-border, #43454a); flex: 1; }
+.commit-settings-popup legend + * { clear: both; }
+.commit-settings-author { display: flex; align-items: center; gap: calc(7px * var(--ui-scale, 1)); padding-left: calc(18px * var(--ui-scale, 1)); }
+.commit-settings-author > span { flex-shrink: 0; }
+.commit-settings-popup .commit-settings-author > input {
+  box-sizing: border-box; min-width: 0; width: 100%; height: calc(27px * var(--ui-row-scale, 1));
+  padding: calc(3px * var(--ui-scale, 1)) calc(6px * var(--ui-scale, 1));
+  border: 1px solid var(--popups-border, #43454a); border-radius: calc(3px * var(--ui-scale, 1));
+  background: var(--popups-background, #25272a); color: var(--popups-foreground, #c9ccd3); font: inherit;
+}
+.commit-settings-author > input::placeholder { color: var(--popups-muted, #787c85); }
+.commit-settings-popup .commit-settings-author > input:focus-visible { outline: 2px solid var(--popups-accent, #3574f0); outline-offset: -1px; }
+.commit-settings-option { display: flex; align-items: center; gap: calc(8px * var(--ui-scale, 1)); min-height: calc(28px * var(--ui-row-scale, 1)); padding-left: calc(18px * var(--ui-scale, 1)); cursor: pointer; }
+.commit-settings-author + .commit-settings-option { margin-top: calc(8px * var(--ui-scale, 1)); }
+.commit-settings-popup .commit-settings-option > input {
+  appearance: none; box-sizing: border-box; flex: 0 0 calc(16px * var(--ui-scale, 1));
+  width: calc(16px * var(--ui-scale, 1)); height: calc(16px * var(--ui-scale, 1)); margin: 0; padding: 0;
+  border: 0; border-radius: 0; box-shadow: none; cursor: pointer;
+  background: transparent url('../icons/assets/checkbox.svg') center / calc(24px * var(--ui-scale, 1)) calc(24px * var(--ui-scale, 1)) no-repeat;
+}
+.commit-settings-popup .commit-settings-option > input:checked { background-image: url('../icons/assets/checkbox-checked.svg'); }
+.commit-settings-popup .commit-settings-option > input:focus-visible { outline: 2px solid var(--popups-accent, #3574f0); outline-offset: 2px; border-radius: calc(2px * var(--ui-scale, 1)); }

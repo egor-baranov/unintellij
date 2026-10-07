@@ -1,0 +1,9 @@
+node_modules/
+dist/
+release/
+/artifacts/
+/test-results*/
+/.idea/
+playwright-report/
+.DS_Store
+*.log

@@ -1,0 +1,9 @@
+.workspace-unsaved { flex:none; width:6px; height:6px; border-radius:50%; background:var(--tabs-foreground,#c9ccd3); }
+.editing-notice { display:flex; align-items:center; gap:8px; padding:5px 10px; background:var(--popups-background,#26282c); color:var(--popups-foreground,#c9ccd3); font-size:12px; }
+.editing-notice span { flex:1; }
+.unsaved-dialog { max-width:min(480px,90vw); padding:20px; border:1px solid var(--popups-border,#484b52); border-radius:7px; background:var(--popups-background,#26282c); color:var(--popups-foreground,#c9ccd3); box-shadow:0 12px 40px #0008; font:inherit; }
+.unsaved-dialog::backdrop { background:#0007; }
+.unsaved-dialog h2 { margin:0 0 12px; font-size:16px; }
+.unsaved-dialog p { overflow-wrap:anywhere; }
+.unsaved-dialog footer { display:flex; justify-content:flex-end; gap:8px; margin-top:20px; }
+.unsaved-dialog .save-primary { background:var(--popups-accent,#3574f0); color:#fff; }

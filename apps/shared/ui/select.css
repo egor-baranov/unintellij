@@ -1,0 +1,29 @@
+.ui-select { min-width:0; width:100%; }
+.ui-select > .ui-select-trigger {
+  width:100%; min-width:0; display:flex; align-items:center; justify-content:space-between; gap:calc(8px * var(--ui-scale, 1));
+  min-height:calc(29px * var(--ui-row-scale, 1)); padding:calc(4px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));
+  border:1px solid var(--popups-border, #41464f); border-radius:var(--radius-control); background:var(--popups-background, #27292c); color:var(--popups-foreground, #c9ccd3); font:inherit; text-align:left;
+}
+.ui-select-trigger > span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ui-select > .ui-select-trigger:hover:not(:disabled),.ui-select > .ui-select-trigger[aria-expanded=true] {
+  border-color:var(--popups-accent, #3574f0);
+  background:color-mix(in srgb, var(--popups-foreground, #c9ccd3) 6%, var(--popups-background, #27292c));
+}
+.ui-select-trigger:focus-visible { outline:2px solid var(--popups-accent, #3574f0); outline-offset:1px; }
+.ui-select-trigger > .ui-icon { flex:none; }
+.ui-select-compact { width:auto; flex:none; }
+.ui-select-compact > .ui-select-trigger { width:calc(31px * var(--ui-scale, 1)); height:100%; justify-content:center; padding:4px; }
+.ui-select-popup {
+  --popup-radius:calc(var(--popup-item-radius) + var(--popup-inset) + var(--popup-border-width));
+  position:fixed; inset:auto; margin:0; box-sizing:border-box; overflow-y:auto; overscroll-behavior:contain;
+  padding:var(--popup-inset); border:var(--popup-border-width) solid var(--popups-border, #4a4d53); border-radius:var(--popup-radius);
+  background:var(--popups-background, #26282c); color:var(--popups-foreground, #d1d5dc); box-shadow:0 6px 24px #0006;
+  font-family:var(--ui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif); font-size:var(--ui-font-size, 13px); line-height:1.4;
+  scrollbar-width:thin; scrollbar-color:var(--popups-border, #52555d) transparent; -webkit-app-region:no-drag;
+}
+.ui-select-option { display:flex; align-items:center; gap:calc(7px * var(--ui-scale, 1)); min-height:calc(29px * var(--ui-row-scale, 1)); padding:calc(4px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1)); border-radius:var(--popup-item-radius); cursor:default; }
+.ui-select-option > span:last-child { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ui-select-option.is-active { background:var(--popups-selection, #2e436e); }
+.ui-select-option[aria-disabled=true] { color:var(--popups-muted, #959ca8); opacity:.6; }
+.ui-select-check { width:calc(16px * var(--ui-scale, 1)); height:calc(16px * var(--ui-scale, 1)); flex:none; display:flex; align-items:center; justify-content:center; }
+.ui-select-popup .jb-icon { filter:var(--popups-icon-filter, none); }

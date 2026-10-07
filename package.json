@@ -1,0 +1,70 @@
+{
+  "name": "unintellij",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:playground": "vite --config apps/playground/vite.config.ts",
+    "dev:desktop": "tsx scripts/dev-desktop.ts",
+    "build:library": "vite build --config packages/monaco-smart-diff/vite.config.ts && tsc -p packages/monaco-smart-diff/tsconfig.build.json",
+    "build:playground": "npm run build:library && vite build --config apps/playground/vite.config.ts",
+    "build:desktop": "npm run build:library && vite build --config apps/desktop/vite.config.ts && tsx scripts/build-desktop.ts",
+    "build": "npm run build:library && vite build --config apps/playground/vite.config.ts && vite build --config apps/desktop/vite.config.ts && tsx scripts/build-desktop.ts",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "generate:languages": "tsx scripts/generate-extra-languages.ts",
+    "package:desktop": "npm run build:desktop && electron-builder --dir --config electron-builder.yml",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "capture:playground": "tsx scripts/capture-presentation.ts",
+    "capture:commit": "tsx scripts/capture-commit.ts",
+    "capture:project": "tsx scripts/capture-project.ts",
+    "capture:chrome": "tsx scripts/capture-chrome.ts",
+    "test:desktop": "npm run build:desktop && tsx scripts/smoke-desktop.ts",
+    "test:commit-actions": "npm run build:desktop && tsx scripts/smoke-commit-actions.ts",
+    "test:workspace-session": "npm run build:desktop && tsx scripts/smoke-workspace-session.ts",
+    "test:find-in-files": "npm run build:desktop && tsx scripts/smoke-find-in-files.ts",
+    "test:tree-actions": "npm run build:desktop && tsx scripts/smoke-tree-actions.ts",
+    "test:change-groups": "npm run build:desktop && tsx scripts/smoke-change-groups.ts",
+    "test:application-menu": "npm run build:desktop && tsx scripts/smoke-application-menu.ts",
+    "test:welcome": "npm run build:desktop && tsx scripts/smoke-welcome.ts",
+    "capture:workspace": "tsx scripts/capture-workspace.ts",
+    "capture:branches": "tsx scripts/capture-branches.ts",
+    "capture:settings": "tsx scripts/capture-settings.ts",
+    "capture:media": "tsx scripts/capture-media.ts"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "0.8.15",
+    "entities": "8.1.0",
+    "marked": "18.1.0",
+    "monaco-editor": "0.55.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tm-grammars": "1.32.22",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.1.1",
+    "electron": "41.10.7",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.25.12",
+    "eslint": "9.39.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.48.0",
+    "vite": "7.3.6",
+    "vitest": "3.2.7"
+  },
+  "overrides": {
+    "dompurify": "3.4.16"
+  }
+}

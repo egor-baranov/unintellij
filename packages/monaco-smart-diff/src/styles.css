@@ -1,0 +1,67 @@
+/* Component-scoped palette. Hosts own Monaco's global syntax theme; these
+   opaque colors keep code, number cells and bands at the same luminance. */
+.smart-diff {
+  --sd-background:#101119; --sd-foreground:#c3cee3; --sd-number:#666d80;
+  --sd-replace:#10242e; --sd-insert:#264b33; --sd-delete:#38232c;
+  --sd-inner-replace:#204454; --sd-inner-insert:#386947; --sd-inner-delete:#623440;
+  --sd-separator:#414652;
+  position:relative; display:grid; grid-template-columns:minmax(0,1fr) 152px minmax(0,1fr);
+  width:100%;height:100%;min-height:0;overflow:hidden;background:var(--sd-background);color:var(--sd-foreground);
+}
+.smart-diff-pane {position:relative;min-width:0;min-height:0;overflow:hidden;}
+.smart-diff-gutter {position:relative;z-index:5;width:152px;height:100%;overflow:hidden;background:transparent;pointer-events:none;user-select:none;}
+.smart-diff-connectors {position:absolute;inset:0;width:100%;height:100%;z-index:4;overflow:hidden;pointer-events:none;user-select:none;}
+.smart-diff-divider {position:absolute;z-index:8;top:0;bottom:0;width:8px;transform:translateX(-50%);cursor:col-resize;touch-action:none;outline:none;}
+.smart-diff-divider::after {content:'';position:absolute;top:0;bottom:0;left:3px;width:2px;background:transparent;}
+.smart-diff:not(.smart-diff-resizing) .smart-diff-divider:focus-visible:not(:active)::after {background:#5385c9;}
+.smart-diff-resizing {cursor:col-resize;user-select:none;}
+.smart-diff .smart-diff-line-number {fill:var(--sd-number);font-weight:400;letter-spacing:0;}
+.smart-diff .connector {fill:var(--sd-replace);stroke:none;}
+.smart-diff .connector-insert {fill:var(--sd-insert);}
+.smart-diff .connector-delete {fill:var(--sd-delete);}
+.smart-diff .smart-diff-line-insert {background:var(--sd-insert);}
+.smart-diff .smart-diff-line-delete {background:var(--sd-delete);}
+.smart-diff .smart-diff-line-replace {background:var(--sd-replace);}
+.smart-diff .smart-diff-inner-insert {background:var(--sd-inner-insert);}
+.smart-diff .smart-diff-inner-delete {background:var(--sd-inner-delete);}
+.smart-diff .smart-diff-inner-replace {background:var(--sd-inner-replace);}
+/* Monaco paints selections before decorations. Put only our opaque fills
+   behind its native selection/find overlays, in a stacking context beneath
+   the separate text layer. Preserve the whole-line / inner-span paint order. */
+.smart-diff .monaco-editor .view-overlays {isolation:isolate;}
+.smart-diff .monaco-editor .view-overlays .current-line {z-index:-2;}
+.smart-diff .smart-diff-line-insert,.smart-diff .smart-diff-line-delete,.smart-diff .smart-diff-line-replace,
+.smart-diff .smart-diff-inner-insert,.smart-diff .smart-diff-inner-delete,.smart-diff .smart-diff-inner-replace {z-index:-1;}
+/* Monaco's inverse rounded-selection corners must erase to the row color. */
+.smart-diff .view-overlays > div:has(> .smart-diff-line-insert) > .cslr.monaco-editor-background {background:var(--sd-insert);}
+.smart-diff .view-overlays > div:has(> .smart-diff-line-delete) > .cslr.monaco-editor-background {background:var(--sd-delete);}
+.smart-diff .view-overlays > div:has(> .smart-diff-line-replace) > .cslr.monaco-editor-background {background:var(--sd-replace);}
+.smart-diff .smart-diff-active {box-shadow:inset 0 1px #64748a40,inset 0 -1px #64748a40;}
+.smart-diff .smart-diff-omission-path {fill:none;stroke:var(--sd-collapsed-separator-stroke,var(--sd-separator));stroke-linecap:butt;stroke-linejoin:round;pointer-events:none;}
+.smart-diff .smart-diff-omission {
+  position:absolute;z-index:5;left:0;right:0;box-sizing:border-box;display:block;min-height:0;
+  margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+  appearance:none;outline:none;cursor:pointer;
+}
+.smart-diff .smart-diff-omission[hidden]{display:none;}
+.smart-diff .smart-diff-omission:hover,.smart-diff .smart-diff-omission:focus-visible {border:0;background:transparent;box-shadow:none;outline:none;}
+.smart-diff .smart-diff-omission:focus-visible::after {content:'';position:absolute;left:12px;bottom:1px;width:24px;height:2px;background:var(--sd-foreground);}
+.smart-diff .smart-diff-spacer {background:#101119;}
+.smart-diff-status {position:absolute;z-index:20;top:12px;left:50%;transform:translateX(-50%);max-width:80%;padding:7px 12px;background:#26282c;border:1px solid #414652;border-radius:2px;color:#b9c6d7;font:12px system-ui;pointer-events:none;}
+.smart-diff-status[hidden]{display:none;}
+/* Native inline diff rendering keeps deleted content in read-only view zones
+   while the modified editor retains its actual model, selection and undo. */
+.smart-diff-inline {display:block;}
+.smart-diff-inline-surface {position:absolute;inset:0;min-width:0;min-height:0;}
+/* Native inline diff decorations share Monaco's selection overlay layer. Keep
+   their fills below selection/find while leaving syntax and removed-text view
+   zones in their own foreground layers. */
+.smart-diff-inline .view-overlays .line-insert,
+.smart-diff-inline .view-overlays .line-delete,
+.smart-diff-inline .view-overlays .char-insert,
+.smart-diff-inline .view-overlays .char-delete {z-index:-1;}
+.smart-diff-inline .view-overlays > div:has(> .line-insert) {--sd-inline-line-background:var(--vscode-diffEditor-insertedLineBackground,var(--vscode-diffEditor-insertedTextBackground));}
+.smart-diff-inline .view-overlays > div:has(> .line-delete) {--sd-inline-line-background:var(--vscode-diffEditor-removedLineBackground,var(--vscode-diffEditor-removedTextBackground));}
+/* Compose the row color over the editor background once, including when a
+   host uses a translucent native diff token, for inverse selection corners. */
+.smart-diff-inline .view-overlays > div:is(:has(> .line-insert),:has(> .line-delete)) > .cslr.monaco-editor-background {background:linear-gradient(var(--sd-inline-line-background),var(--sd-inline-line-background)),var(--vscode-editor-background);}

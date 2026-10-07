@@ -1,0 +1,23 @@
+.commit-preview-body {flex:1;display:flex;min-width:0;min-height:0;padding:0 var(--app-frame-inset) var(--app-frame-inset);}
+.commit-preview-sidebar {flex:none;min-width:280px;max-width:560px;min-height:0;background:#181a1c;border-radius:var(--app-panel-radius);overflow:hidden;}
+.commit-preview-resizer {width:calc(6px * var(--ui-scale, 1));flex:none;background:transparent;cursor:col-resize;touch-action:none;}
+.commit-preview-resizer {outline:0;}
+.commit-preview-resizer:focus-visible:not(:active) {background:var(--window-accent,#527ac7);}
+.commit-preview-diff {min-width:0;}
+.commit-preview-body>.viewer-section {border-radius:var(--app-panel-radius);overflow:hidden;}
+.preview-repository {font-size:calc(12px * var(--ui-text-scale, 1));color:#b5bbc6;}
+.preview-indicator {font-size:calc(10px * var(--ui-text-scale, 1));border:1px solid #464a53;border-radius:calc(3px * var(--ui-scale, 1));color:#949dab;padding:calc(1px * var(--ui-scale, 1)) calc(5px * var(--ui-scale, 1));}
+.preview-link {font-size:calc(12px * var(--ui-text-scale, 1));color:#a0a5af;text-decoration:none;padding:calc(6px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));border-radius:calc(4px * var(--ui-scale, 1));white-space:nowrap;}
+.preview-link:hover {background:#35373c;color:#d7dbe3;}
+@media(max-width:1100px){.commit-preview .preview-repository{display:none;}.commit-preview .topbar{gap:calc(5px * var(--ui-scale, 1));}.commit-preview .source-path{font-size:calc(10px * var(--ui-text-scale, 1));}}
+@media(max-width:800px){.commit-preview .preview-indicator,.commit-preview .wordmark{display:none;}}
+.preview-sidebar-pane {height:100%;min-height:0;display:flex;flex-direction:column;}
+.preview-sidebar-pane[hidden] {display:none;}
+.commit-preview-sidebar[hidden],.commit-preview-resizer[hidden] {display:none;}
+.commit-preview-body>.editor-workspace {flex:1;border-radius:var(--app-panel-radius);}
+.project-file-controls {display:flex;align-items:center;gap:calc(12px * var(--ui-scale, 1));}
+.project-read-only {font-size:calc(10px * var(--ui-text-scale, 1));color:#8390a2;white-space:nowrap;}
+.project-file-header {height:calc(29px * var(--ui-row-scale, 1));display:flex;align-items:center;gap:calc(12px * var(--ui-scale, 1));padding:0 calc(12px * var(--ui-scale, 1));flex-shrink:0;border-bottom:1px solid var(--chrome-border);background:var(--chrome-secondary);}
+.project-file-header .source-path {flex:1;}
+.project-preview-file {min-width:0;background:#101119;}
+@media(max-width:850px){.project-file-controls .project-read-only{display:none;}.commit-preview .preview-link{font-size:calc(10px * var(--ui-text-scale, 1));}}

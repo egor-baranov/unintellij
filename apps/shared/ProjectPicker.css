@@ -1,0 +1,37 @@
+.project-picker.ui-menu-trigger {
+  gap:calc(8px * var(--ui-scale, 1)); padding:calc(4px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));
+  border-radius:calc(6px * var(--ui-scale, 1));
+}
+.project-picker-menu.ui-menu {
+  --popup-inset:calc(7px * var(--ui-scale, 1));
+  --popup-item-radius:var(--radius-control);
+  --popup-radius:calc(var(--popup-item-radius) + var(--popup-inset) + var(--popup-border-width));
+  width:calc(230px * var(--ui-scale, 1)); min-width:0; max-width:calc(100vw - 16px);
+  padding:var(--popup-inset); border-radius:var(--popup-radius);
+  font-size:calc(14px * var(--ui-text-scale, 1));
+}
+.project-picker-menu .ui-menu-item {
+  gap:calc(4px * var(--ui-scale, 1)); padding:calc(2px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));
+  min-height:calc(24px * var(--ui-row-scale, 1)); border-radius:var(--popup-item-radius);
+  line-height:calc(20px * var(--ui-text-scale, 1));
+}
+.project-picker-menu .ui-menu-icon { width:calc(16px * var(--ui-scale, 1)); }
+.project-picker-menu .ui-menu-label {
+  padding:calc(2px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1));
+  font-size:calc(12px * var(--ui-text-scale, 1)); font-weight:600;
+}
+.project-picker-menu .ui-menu-separator {
+  margin:calc(4px * var(--ui-scale, 1)) 0;
+}
+.project-picker-menu .project-picker-entry {
+  align-items:flex-start; gap:calc(8px * var(--ui-scale, 1));
+  min-height:calc(52px * var(--ui-row-scale, 1)); padding-block:calc(6px * var(--ui-scale, 1));
+}
+.project-picker-menu .project-picker-entry .ui-menu-icon {
+  width:calc(20px * var(--ui-scale, 1)); height:calc(20px * var(--ui-scale, 1)); margin-top:calc(1px * var(--ui-scale, 1));
+}
+.project-picker-menu .ui-menu-description {
+  max-width:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; overflow-wrap:normal;
+  font-size:calc(13px * var(--ui-text-scale, 1)); line-height:calc(20px * var(--ui-text-scale, 1));
+  padding-top:0;
+}

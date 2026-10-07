@@ -1,0 +1,87 @@
+/* Host-only palette bridge. The package retains its standalone defaults. */
+:root[data-appearance] {
+  --chrome:var(--window-background); --chrome-secondary:var(--window-background);
+  --chrome-border:var(--window-border); --chrome-muted:var(--window-muted);
+  font-family:var(--ui-font-family); font-size:var(--ui-font-size);
+  color:var(--window-foreground); background:var(--window-background);
+}
+:root[data-appearance] :is(.application,.editor-toolbar,.editor-heading,.branch-comparison-heading) {
+  background:var(--window-background); color:var(--window-foreground); border-color:var(--window-border);
+}
+:root[data-appearance] :is(.source-kind,.editor-file-title,.chrome-icon-button,.chrome-text-button,.ui-menu-trigger,.ui-toolbar-icon,.ui-toolbar-toggle,.branch-trigger) { color:var(--window-foreground); }
+:root[data-appearance] :is(.source-path,.editor-breadcrumb,.editor-heading-suffix,.preview-link,.preview-indicator,.muted) { color:var(--window-muted); }
+:root[data-appearance] button:focus-visible { outline-color:var(--window-accent); }
+:root[data-appearance] :is(.chrome-icon-button,.chrome-text-button,.ui-menu-trigger,.ui-toolbar-icon,.ui-toolbar-toggle,.workspace-switch>button):hover:not(:disabled),
+:root[data-appearance] :is(.ui-menu-trigger[aria-expanded=true],.workspace-switch>button[aria-pressed=true],.ui-toolbar-toggle[aria-pressed=true]) {
+  background:var(--window-selection); color:var(--window-foreground); border-color:var(--window-border);
+}
+:root[data-appearance] .workspace-switch > button[aria-pressed="true"],
+:root[data-appearance] .workspace-switch > button[aria-pressed="true"]:hover {
+  background:var(--window-accent); color:#fff; outline-color:#fff;
+}
+:root[data-appearance] :is(.project-picker,.branch-trigger).ui-menu-trigger:is(:hover,[aria-expanded=true]):not(:disabled) {
+  background:color-mix(in srgb,var(--window-foreground) 12%,var(--window-background)); border-color:transparent;
+}
+:root[data-appearance] :is(.project-panel,.commit-panel,.sidebar,.commit-preview-sidebar,.branch-comparison-sidebar) {
+  --project-background:var(--sidebar-background); --project-text:var(--sidebar-foreground); --project-muted:var(--sidebar-muted); --project-border:var(--sidebar-border);
+  --commit-background:var(--sidebar-background); --commit-text:var(--sidebar-foreground); --commit-muted:var(--sidebar-muted); --commit-border:var(--sidebar-border);
+  color:var(--sidebar-foreground); background:var(--sidebar-background);
+}
+:root[data-appearance] :is(.project-tree-row,.commit-tree-row):hover { background:color-mix(in srgb,var(--sidebar-selection) 45%,var(--sidebar-background)); }
+:root[data-appearance] :is(.project-tree-row.is-current,.commit-tree-row.is-current,.branch-comparison-file[aria-pressed=true]) { background:var(--sidebar-selection); }
+:root[data-appearance] :is(.project-root-path,.commit-file-count,.project-kind-label,.branch-comparison-file small,.branch-comparison-tabs span,.branch-comparison-commit small,.branch-comparison-commits h3) { color:var(--sidebar-muted); }
+:root[data-appearance] :is(.commit-tool,.project-tool,.commit-tree-row.commit-group[aria-level="2"]) { color:var(--sidebar-foreground); }
+:root[data-appearance] :is(.commit-tool-divider,.project-tool-divider) { background:var(--sidebar-border); }
+:root[data-appearance] :is(.commit-message,.commit-footer-actions>button:not(.commit-tool)) { background:var(--sidebar-background); color:var(--sidebar-foreground); border-color:var(--sidebar-border); }
+:root[data-appearance] .commit-message { font-family:var(--code-font-family); }
+:root[data-appearance] :is(.commit-message:focus,.project-tree-row:focus-visible,.commit-tree-row:focus-visible) { border-color:var(--sidebar-accent); outline-color:var(--sidebar-accent); }
+:root[data-appearance] .commit-message::placeholder { color:var(--sidebar-muted); }
+:root[data-appearance] :is(.commit-status-added,.project-status-added) .commit-node-name,
+:root[data-appearance] .project-status-added .project-node-name { color:var(--status-added); }
+:root[data-appearance] .commit-status-modified .commit-node-name,:root[data-appearance] .project-status-modified .project-node-name { color:var(--status-modified); }
+:root[data-appearance] .commit-status-untracked .commit-node-name,:root[data-appearance] .project-status-untracked .project-node-name { color:var(--status-untracked); }
+:root[data-appearance] .commit-status-deleted .commit-node-name { color:var(--tree-deleted); }
+:root[data-appearance] .commit-status-deleted.is-current .commit-node-name { color:var(--tree-selected-annotation); }
+:root[data-appearance] .project-neutral-status .project-tree-row:not(.is-unsupported) .project-node-name { color:var(--sidebar-foreground); }
+:root[data-appearance] :is(.workspace-tabbar,.editor-workspace,.workspace-content,.branch-comparison) { background:var(--tabs-background); border-color:var(--tabs-border); }
+:root[data-appearance] .workspace-tabbar .workspace-tab { color:var(--tabs-foreground); }
+:root[data-appearance] .workspace-empty { color:var(--tabs-muted); }
+:root[data-appearance] .workspace-divider { background:var(--tabs-border); }
+:root[data-appearance] .workspace-divider:focus-visible:not(.is-resizing):not(:active) { background:var(--tabs-accent); }
+:root[data-appearance] :is(.ui-menu,.branch-popup,.branch-submenu,.branch-dialog,.branch-toast) {
+  background:var(--popups-background); color:var(--popups-foreground); border-color:var(--popups-border); font-family:var(--ui-font-family);
+}
+:root[data-appearance] :is(.ui-menu-description,.ui-menu-shortcut,.ui-menu-label,.branch-status,.branch-preview-label,.branch-footer,.branch-subtitle,.branch-dialog-context,.branch-dialog-hint,.branch-dialog legend,.branch-tracking,.branch-entry kbd) { color:var(--popups-muted); }
+:root[data-appearance] .branch-entry kbd { font-family:var(--ui-font-family); }
+:root[data-appearance] :is(.ui-menu-item.is-active,.ui-menu-item:hover,.ui-menu-item:focus-visible,.branch-entry.is-selected,.branch-entry:not(:disabled):hover,.branch-row.is-selected,.branch-settings button:hover) { background:var(--popups-selection); color:var(--popups-foreground); }
+:root[data-appearance] :is(.ui-menu-item:disabled,.branch-entry:disabled) { color:var(--popups-muted); }
+:root[data-appearance] .project-picker-menu .ui-menu-item.is-active .ui-menu-description {
+  color:color-mix(in srgb,var(--popups-foreground) 80%,var(--popups-muted));
+}
+:root[data-appearance] :is(.ui-menu-separator,.branch-entry.after-separator:before,.branch-section:before) { background:var(--popups-border); }
+:root[data-appearance] :is(.branch-search,.branch-dialog input,.branch-dialog textarea,.branch-dialog footer button) { background:var(--popups-background); color:var(--popups-foreground); border-color:var(--popups-border); }
+:root[data-appearance] :is(.branch-search input,.branch-settings button,.branch-group) { color:var(--popups-foreground); }
+:root[data-appearance] :is(.branch-footer,.branch-settings,.branch-dialog header,.branch-dialog footer,.branch-dialog fieldset) { border-color:var(--popups-border); }
+:root[data-appearance] .branch-dialog footer .branch-primary { background:var(--popups-selection); border-color:var(--popups-accent); }
+:root[data-appearance] :is(.branch-search input::placeholder,.branch-dialog input::placeholder,.branch-dialog textarea::placeholder) { color:var(--popups-muted); }
+:root[data-appearance] :is(.branch-search:focus-within,.branch-entry:focus-visible,.branch-dialog input:focus-visible) { outline-color:var(--popups-accent); border-color:var(--popups-accent); }
+:root[data-appearance] .smart-diff {
+  --sd-background:var(--editor-background); --sd-foreground:var(--editor-foreground); --sd-number:var(--editor-line-number);
+  --sd-insert:var(--diff-added); --sd-delete:var(--diff-removed); --sd-replace:var(--diff-modified);
+  --sd-inner-insert:var(--diff-added-inner); --sd-inner-delete:var(--diff-removed-inner); --sd-inner-replace:var(--diff-modified-inner);
+  --sd-separator:var(--editor-line-number);
+}
+:root[data-appearance] :is(.smart-diff-spacer,.file-surface) { background:var(--editor-background); }
+:root[data-appearance] .file-surface-added { --added-file-background:var(--diff-added); }
+:root[data-appearance] .file-surface-deleted { --deleted-file-background:var(--diff-removed); }
+:root[data-appearance] .smart-diff .smart-diff-omission { font-family:var(--ui-font-family); color:var(--editor-line-number); }
+:root[data-appearance] .smart-diff-status { background:var(--popups-background); color:var(--popups-foreground); border-color:var(--popups-border); font-family:var(--ui-font-family); }
+:root[data-appearance] .jb-icon { --icon-filter:var(--window-icon-filter); }
+:root[data-appearance] :is(.project-panel,.commit-panel) .jb-icon { --icon-filter:var(--sidebar-icon-filter); }
+:root[data-appearance] .workspace-tabbar .jb-icon { --icon-filter:var(--tabs-icon-filter); }
+:root[data-appearance] :is(.ui-menu,.branch-popup,.branch-submenu,.branch-dialog,.settings-dialog) .jb-icon { --icon-filter:var(--popups-icon-filter); }
+:root[data-appearance] .jb-icon:is([data-icon="folder"],[data-icon="project"],[data-icon="commit"],[data-icon="diff"],[data-icon="settings"],[data-icon="more"],[data-icon="close"],[data-icon="refresh"],[data-icon="up"],[data-icon="down"],[data-icon="chevron"],[data-icon="chevron-down"],[data-icon="expand"],[data-icon="collapse"],[data-icon="branch"],[data-icon="file"],[data-icon="split"],[data-icon="sync"],[data-icon="wrap"]) { filter:var(--icon-filter); }
+:root[data-appearance] .workspace-switch > button[aria-pressed="true"] .jb-icon { --icon-filter:brightness(0) invert(1); }
+
+:root[data-appearance] .commit-footer-actions > button.commit-primary:not(:disabled) { background: #3574f0; border-color: #3574f0; color: #fff; }
+:root[data-appearance] .commit-footer-actions > button.commit-primary:hover:not(:disabled) { background: #467ff2; border-color: #467ff2; }

@@ -1,0 +1,22 @@
+.desktop-body{flex:1;display:flex;min-height:0;min-width:0;padding:0 var(--app-frame-inset) var(--app-frame-inset)}
+/* The native macOS window curve is larger than the browser shell's 12px
+   radius. Derive the content corner here, on the same root as the inset. */
+html[data-window-chrome="macos"]{--app-frame-radius:18px}
+/* Native traffic lights occupy the leftmost 76px of the same toolbar. */
+html[data-window-chrome="macos"] .desktop-topbar{padding-left:86px;-webkit-app-region:drag}
+html[data-window-chrome="macos"] .desktop-topbar :is(button,a,input,[role="group"]){-webkit-app-region:no-drag}
+.desktop-workspace-host{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0}
+.sidebar{background:#2b2d30;min-width:280px;max-width:560px;flex-shrink:0;display:flex;flex-direction:column;overflow:hidden}
+.workspace-panel{display:flex;flex:1;min-height:0;flex-direction:column;overflow:hidden}
+.workspace-panel[hidden]{display:none}
+.sidebar[hidden],.sidebar-resizer[hidden]{display:none}
+.desktop-editor-workspace{overflow:hidden;min-width:0;min-height:0}
+.sidebar-resizer{width:calc(6px * var(--ui-scale, 1));cursor:col-resize;background:transparent;flex-shrink:0;touch-action:none}
+.sidebar,.desktop-body>.viewer-section{border-radius:var(--app-panel-radius);overflow:hidden}
+.sidebar-resizer{outline:0}
+.sidebar-resizer:focus-visible:not(:active){background:var(--window-accent,#568b9a)}
+.repository-button{max-width:calc(320px * var(--ui-scale, 1));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rename-origin{overflow:hidden;text-overflow:ellipsis;white-space:pre;font-size:calc(11px * var(--ui-text-scale, 1))}
+@media(max-width:980px){.repository-button{max-width:calc(190px * var(--ui-scale, 1))}.wordmark{font-size:calc(11px * var(--ui-text-scale, 1))}.topbar .toolbar-divider{margin:0}}
+.project-loading-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:500}
+.project-loading-screen>div[role="status"]{display:flex;flex:1;min-height:0}

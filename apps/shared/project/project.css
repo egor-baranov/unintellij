@@ -1,0 +1,64 @@
+.project-panel {
+  --project-background: #181a1c; --project-border: #2b2d30; --project-text: #c9ccd3; --project-muted: #787c85;
+  display: flex; flex-direction: column; min-width: 0; min-height: 0; width: 100%; height: 100%;
+  color: var(--project-text); background: var(--project-background); font-size: calc(13px * var(--ui-text-scale, 1));
+}
+.project-panel-heading { height: calc(40px * var(--ui-row-scale, 1)); flex: 0 0 calc(40px * var(--ui-row-scale, 1)); padding: 0 calc(8px * var(--ui-scale, 1)) 0 calc(11px * var(--ui-scale, 1)); display: flex; align-items: center; gap: calc(6px * var(--ui-scale, 1)); }
+.project-panel-heading h2 { margin: 0; font-size: calc(15px * var(--ui-text-scale, 1)); font-weight: 600; }
+.project-panel-heading .project-title-menu { padding: calc(3px * var(--ui-scale, 1)) calc(4px * var(--ui-scale, 1)); border: 0; box-shadow: none; background: transparent; min-height: calc(28px * var(--ui-row-scale, 1)); gap: calc(7px * var(--ui-scale, 1)); font-size: calc(15px * var(--ui-text-scale, 1)); font-weight: 600; color: var(--project-text); }
+.project-panel-heading .project-title-menu:hover, .project-panel-heading .project-title-menu[aria-expanded="true"] { background: #2b2d30; }
+.project-toolbar { margin-left: auto; display: flex; align-items: center; gap: calc(1px * var(--ui-scale, 1)); }
+.project-panel .project-tool { width: calc(25px * var(--ui-scale, 1)); min-width: calc(25px * var(--ui-scale, 1)); height: calc(26px * var(--ui-row-scale, 1)); min-height: calc(26px * var(--ui-row-scale, 1)); display: inline-flex; align-items: center; justify-content: center; padding: calc(3px * var(--ui-scale, 1)); border: 0; border-radius: calc(3px * var(--ui-scale, 1)); background: transparent; color: #aeb2ba; box-shadow: none; }
+.project-panel .project-tool:hover:not(:disabled) { background: #2c2f34; color: #d9dde5; }
+.project-panel .project-tool:focus-visible { outline: 2px solid #5685c9; outline-offset: calc(-2px * var(--ui-scale, 1)); }
+.project-panel .project-tool:disabled { opacity: .4; }
+.project-tool-divider { width: calc(1px * var(--ui-scale, 1)); height: calc(18px * var(--ui-row-scale, 1)); background: #3a3c40; margin: 0 calc(4px * var(--ui-scale, 1)); }
+.project-icon { width: calc(16px * var(--ui-scale, 1)); height: calc(16px * var(--ui-row-scale, 1)); flex: 0 0 calc(16px * var(--ui-row-scale, 1)); vertical-align: middle; object-fit: contain; }
+.project-link-icon { display: inline-block; position: relative; }
+.project-link-icon > .jb-icon { position: absolute; inset: 0; }
+.project-tree { flex: 1; min-height: 0; overflow: auto; padding: calc(5px * var(--ui-scale, 1)) calc(8px * var(--ui-scale, 1)) calc(12px * var(--ui-scale, 1)); scrollbar-width: thin; scrollbar-color: #45474b transparent; }
+.project-tree-content { width: max-content; min-width: 100%; }
+.project-tree-row { height: calc(28px * var(--ui-row-scale, 1)); min-height: calc(28px * var(--ui-row-scale, 1)); display: flex; align-items: center; gap: calc(5px * var(--ui-scale, 1)); width: 100%; min-width: max-content; padding-right: calc(9px * var(--ui-scale, 1)); border-radius: calc(4px * var(--ui-scale, 1)); outline-offset: calc(-1px * var(--ui-scale, 1)); cursor: default; white-space: pre; }
+.project-tree-row:hover { background: #25272b; }
+.project-tree-row.is-current { background: #303236; }
+.project-tree:focus-within .project-tree-row.is-current { background: #2c456e; }
+.project-tree-row:focus-visible { outline: 1px solid #6a88b6; }
+.project-disclosure { width: calc(16px * var(--ui-scale, 1)); flex: 0 0 calc(16px * var(--ui-row-scale, 1)); display: flex; align-items: center; }
+.project-disclosure .project-icon { width: calc(16px * var(--ui-scale, 1)); height: calc(16px * var(--ui-row-scale, 1)); flex-basis: calc(16px * var(--ui-row-scale, 1)); }
+.project-disclosure.is-open .project-icon { transform: rotate(90deg); }
+.project-root .project-node-name { font-weight: 600; }
+.project-node-name { line-height: calc(20px * var(--ui-text-scale, 1)); }
+.project-root-path { color: #737985; margin-left: calc(4px * var(--ui-scale, 1)); font-weight: 400; }
+.project-kind-label { color: var(--project-muted); font-size: calc(10px * var(--ui-text-scale, 1)); margin-left: calc(6px * var(--ui-scale, 1)); }
+/* All semantic paint is resolved once per facts/theme update. Interaction only
+   switches CSS layers, so scope colors include the indentation and selection
+   always wins without changing names, diagnostics, or folder roles. These
+   selectors also outrank the host's generic sidebar appearance bridge. */
+:root .project-panel[style] { color: var(--tree-foreground); background: var(--tree-background); }
+:root .project-panel .project-tree .project-tree-row[data-role] { background: var(--tree-row-background); }
+:root .project-panel .project-tree .project-tree-row[data-role]:hover { background: var(--tree-hover); }
+:root .project-panel .project-tree .project-tree-row[data-role].is-current { background: var(--tree-unfocused-selection); }
+:root .project-panel .project-tree:focus-within .project-tree-row[data-role].is-current { background: var(--tree-selection); }
+:root .project-panel .project-tree-row[data-role] .project-node-name { color: var(--tree-row-foreground); }
+:root .project-panel .project-tree-row[data-role] :is(.project-kind-label,.project-root-path) { color: var(--tree-row-annotation); }
+:root .project-panel .project-tree-row[data-role].is-current :is(.project-kind-label,.project-root-path) { color: var(--tree-selected-annotation); }
+.project-tree-row[data-diagnostic] .project-node-name { text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: var(--tree-row-diagnostic); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.project-semantic-icon > :is(svg,.jb-icon) { width: 100%; height: 100%; }
+.project-annotation { font-size: inherit; margin-left: 0; }
+.project-action-error { display: flex; align-items: start; gap: 6px; padding: 6px 10px; color: #d0a888; font-size: calc(11px * var(--ui-text-scale, 1)); }
+.project-action-error > button { margin-left: auto; padding: 0 3px; min-height: 18px; color: inherit; background: transparent; border: 0; }
+.project-directory-message { padding-top: calc(5px * var(--ui-scale, 1)); padding-bottom: calc(6px * var(--ui-scale, 1)); padding-right: calc(8px * var(--ui-scale, 1)); font-size: calc(11px * var(--ui-text-scale, 1)); color: var(--project-muted); line-height: 1.5; max-width: 100%; overflow-wrap: anywhere; }
+.project-directory-error { color: #d0a888; }
+.project-directory-message button { font-size: calc(11px * var(--ui-text-scale, 1)); padding: calc(1px * var(--ui-scale, 1)) calc(5px * var(--ui-scale, 1)); min-height: calc(20px * var(--ui-row-scale, 1)); margin-left: calc(6px * var(--ui-scale, 1)); }
+.workspace-switch { display: inline-flex; flex: 0 0 auto; align-items: center; gap: calc(2px * var(--ui-scale, 1)); padding: 0; }
+.workspace-switch > button { display: inline-flex; flex: 0 0 calc(28px * var(--ui-row-scale, 1)); align-items: center; justify-content: center; width: calc(28px * var(--ui-scale, 1)); min-width: calc(28px * var(--ui-scale, 1)); min-height: calc(28px * var(--ui-row-scale, 1)); height: calc(28px * var(--ui-row-scale, 1)); padding: calc(6px * var(--ui-scale, 1)); border: 0; border-radius: calc(4px * var(--ui-scale, 1)); background: transparent; color: #9da3ae; box-shadow: none; }
+.workspace-switch > button:hover { background: #30333a; color: #e0e4ec; }
+.workspace-switch > button[aria-pressed="true"],
+.workspace-switch > button[aria-pressed="true"]:hover { background: var(--window-accent, #3574f0); color: #fff; }
+.workspace-switch > button[aria-pressed="true"] .jb-icon { filter: brightness(0) invert(1); }
+.workspace-switch > button:focus-visible { outline: 2px solid #5685c9; outline-offset: calc(-2px * var(--ui-scale, 1)); }
+.workspace-switch .project-icon { height: calc(16px * var(--ui-row-scale, 1)); width: calc(16px * var(--ui-scale, 1)); flex-basis: calc(16px * var(--ui-row-scale, 1)); }
+.file-surface { width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; background: #1e1f22; }
+.project-spinning { animation: project-spin 1.3s linear infinite; }
+@keyframes project-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .project-spinning { animation: none; } }

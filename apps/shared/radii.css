@@ -1,0 +1,18 @@
+:root {
+  --radius-small: calc(3px * var(--ui-scale, 1));
+  --radius-control: calc(4px * var(--ui-scale, 1));
+  --radius-tab: calc(6px * var(--ui-scale, 1));
+
+  /* Browser shell default; native desktop chrome overrides the frame radius
+     on the root. Keep side/bottom insets equal and derive the inner radius.
+     Chrome dimensions stay in CSS pixels when UI scale changes. */
+  --app-frame-radius: 12px;
+  --app-frame-inset: 6px;
+  --app-panel-radius: max(0px, calc(var(--app-frame-radius) - var(--app-frame-inset)));
+
+  /* Popups calculate their outer radius locally: item + padding + border.
+     A local calculation also respects specialized menus' inset overrides. */
+  --popup-border-width: 1px;
+  --popup-inset: calc(5px * var(--ui-scale, 1));
+  --popup-item-radius: var(--radius-small);
+}

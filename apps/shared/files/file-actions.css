@@ -1,0 +1,18 @@
+.file-action-app-icon { display: block; width: calc(18px * var(--ui-scale, 1)); height: calc(18px * var(--ui-scale, 1)); object-fit: contain; }
+/* Capability reasons stay in aria-description without changing menu geometry
+   as the asynchronous filesystem check completes. */
+.tree-action-menu-item .ui-menu-description { display: none; }
+.file-action-error { position: fixed; z-index: 2000; bottom: 16px; right: 16px; max-width: min(480px, calc(100vw - 32px)); padding: 8px 10px 8px 14px; display: flex; align-items: center; gap: 12px; color: var(--popups-foreground, #c9cbd0); background: var(--popups-background, #25272a); border: 1px solid var(--popups-border, #45474c); border-radius: 6px; box-shadow: 0 4px 20px #0005; font-family: var(--ui-font-family); }
+.tree-action-dialog { width: min(calc(420px * var(--ui-scale, 1)), calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: calc(20px * var(--ui-scale, 1)); overflow: auto; border: 1px solid var(--popups-border, #45474c); border-radius: calc(9px * var(--ui-scale, 1)); background: var(--popups-background, #25272a); color: var(--popups-foreground, #c9cbd0); box-shadow: 0 12px 40px #0007; font: inherit; }
+.tree-action-dialog::backdrop { background: #0006; }
+.tree-action-dialog h2 { margin: 0 0 14px; font-size: calc(16px * var(--ui-text-scale, 1)); font-weight: 600; }
+.tree-action-dialog p { overflow-wrap: anywhere; line-height: 1.5; }
+.tree-action-dialog .tree-action-location { margin: 0 0 14px; color: var(--popups-muted, #92959d); font-size: calc(12px * var(--ui-text-scale, 1)); }
+.tree-action-dialog label { display: block; margin-bottom: 6px; }
+.tree-action-dialog input { width: 100%; height: calc(30px * var(--ui-row-scale, 1)); padding: 4px 8px; border: 1px solid var(--popups-border, #45474c); border-radius: 4px; background: var(--popups-background, #25272a); color: inherit; font: inherit; }
+.tree-action-dialog input:focus { outline: 2px solid var(--popups-accent, #3574f0); outline-offset: -1px; }
+.tree-action-dialog .tree-action-validation { color: var(--status-deleted, #ea8d8a); margin: 10px 0 0; font-size: calc(12px * var(--ui-text-scale, 1)); }
+.tree-action-dialog footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+.tree-action-dialog button { border: 1px solid var(--popups-border, #45474c); border-radius: 4px; background: transparent; color: inherit; padding: 5px 12px; font: inherit; }
+.tree-action-dialog .tree-action-primary { border-color: var(--popups-accent, #3574f0); background: var(--popups-accent, #3574f0); color: #fff; }
+.tree-action-dialog button:disabled { opacity: .45; }
